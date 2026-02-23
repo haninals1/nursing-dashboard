@@ -1,0 +1,112 @@
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* LEFT */
+.login-left {
+  flex: 1;
+  background: #899bb3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-left img {
+  width: 320px;
+}
+
+/* RIGHT */
+.login-right {
+  flex: 1;
+  background: #aec6e1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.login-right h2 {
+  color: #2f3d60;
+  margin-bottom: 20px;
+}
+
+.login-right input {
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e3effc;
+  border-radius: 6px;
+}
+
+.login-right button {
+  padding: 12px;
+  background: #2f3d60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.forgot {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #445d7c;
+}
+
+.login-title {
+  font-size: 44px;
+  /* كبّريه */
+  font-weight: 700;
+  text-align: center;
+  /* بالنص */
+  margin: 0 0 28px 0;
+  color: #2F3D60;
+}
+
+.field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0 6px;
+  color: #2F3D60;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #2F3D60;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.forgot {
+  display: block;
+  text-align: center;
+  /* بالنص */
+  margin-top: 10px;
+  font-size: 12px;
+  /* أصغر */
+  color: #2F3D60;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
