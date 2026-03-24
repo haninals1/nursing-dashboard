@@ -1,28 +1,20 @@
 const express = require("express");
-const cors = require("cors");
-const pool = require("./db");
+const nursesRoutes = require("./routes/nursesRoutes");
 
 const app = express();
-app.use(cors());
+
 app.use(express.json());
 
-// اختبار السيرفر
+// test
 app.get("/", (req, res) => {
-    res.send("Nursing Dashboard API running ✅");
+    res.send("Server is working ✅");
 });
 
-// اختبار اتصال قاعدة البيانات
-app.get("/test-db", async (req, res) => {
-    try {
-        const [rows] = await pool.query("SELECT 1 AS ok");
-        res.json({ success: true, rows });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ success: false, error: err.message });
-    }
-});
+// nurses API
+app.use("/api/nurses", nursesRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = 4000;
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
