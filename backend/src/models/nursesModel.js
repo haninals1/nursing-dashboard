@@ -17,23 +17,42 @@ exports.getNurseById = async (id) => {
 
 // CREATE
 exports.createNurse = async (data) => {
-    const { full_name, unit, job_title } = data;
+    const {
+        user_id,
+        full_name,
+        unit,
+        job_title,
+        qualification,
+        license_number,
+        status,
+        hire_date
+    } = data;
 
     const [result] = await pool.query(
-        "INSERT INTO nursing_staff (full_name, unit, job_title) VALUES (?, ?, ?)",
-        [full_name, unit, job_title]
+        `INSERT INTO nursing_staff 
+        (user_id, full_name, unit, job_title, qualification, license_number, status, hire_date) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [user_id, full_name, unit, job_title, qualification, license_number, status, hire_date]
     );
 
     return result;
 };
-
 // UPDATE
 exports.updateNurse = async (id, data) => {
-    const { full_name, unit, job_title } = data;
+    const {
+        full_name,
+        unit,
+        job_title,
+        qualification,
+        license_number,
+        status
+    } = data;
 
     const [result] = await pool.query(
-        "UPDATE nursing_staff SET full_name=?, unit=?, job_title=? WHERE nurse_id=?",
-        [full_name, unit, job_title, id]
+        `UPDATE nursing_staff 
+         SET full_name=?, unit=?, job_title=?, qualification=?, license_number=?, status=? 
+         WHERE nurse_id=?`,
+        [full_name, unit, job_title, qualification, license_number, status, id]
     );
 
     return result;
