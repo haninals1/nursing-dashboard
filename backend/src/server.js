@@ -12,6 +12,8 @@ app.get("/", (req, res) => {
 
 // nurses API
 app.use("/api/nurses", nursesRoutes);
+// requests API
+app.use("/api/requests", requestsRoutes);
 
 const PORT = 4000;
 
