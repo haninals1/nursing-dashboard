@@ -6,6 +6,16 @@ exports.getAllRequests = async () => {
     return rows;
 };
 
+// GET by nurse id
+exports.getRequestsByNurseId = async (nurseId) => {
+    const [rows] = await pool.query(
+        "SELECT * FROM request WHERE nurse_id = ?",
+        [nurseId]
+    );
+
+    return rows;
+};
+
 // GET one
 exports.getRequestById = async (id) => {
     const [rows] = await pool.query(
