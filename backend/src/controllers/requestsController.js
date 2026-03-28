@@ -9,6 +9,15 @@ exports.getAll = async (req, res) => {
     }
 };
 
+exports.getByNurseId = async (req, res) => {
+    try {
+        const data = await model.getRequestsByNurseId(req.params.nurse_id);
+        res.json(data);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+};
+
 exports.getOne = async (req, res) => {
     try {
         const data = await model.getRequestById(req.params.id);
