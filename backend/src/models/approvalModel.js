@@ -1,5 +1,10 @@
 const pool = require("../db");
 
+exports.getAllApprovals = async () => {
+    const [rows] = await pool.query("SELECT * FROM request_approval");
+    return rows;
+};
+
 // first approval (Supervisor)
 exports.createApproval = async (request_id, role) => {
     const [result] = await pool.query(
