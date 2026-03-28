@@ -3,6 +3,8 @@ const router = express.Router();
 
 const approvalController = require("../controllers/approvalController");
 
+router.get("/", approvalController.getAll);
+
 // Supervisor
 router.post("/supervisor", approvalController.supervisorDecision);
 
