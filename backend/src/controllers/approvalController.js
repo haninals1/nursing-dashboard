@@ -1,6 +1,16 @@
 const approvalModel = require("../models/approvalModel");
 const requestModel = require("../models/requestsModel");
 
+
+exports.getAll = async (req, res) => {
+    try {
+        const data = await approvalModel.getAllApprovals();
+        res.json(data);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+};
+
 // Nursing Supervisor decision
 exports.supervisorDecision = async (req, res) => {
     const { request_id, decision } = req.body;
