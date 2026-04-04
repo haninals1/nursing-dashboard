@@ -5,6 +5,7 @@ import "../styles/login.css";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+<<<<<<< HEAD
 
 
 
@@ -18,10 +19,21 @@ export default function Login() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ email, password })
+=======
+    /////
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+>>>>>>> 3a1a0863ac8041ba750a9f21e68838f85d29b54c
             });
 
             const data = await res.json();
 
+<<<<<<< HEAD
             if (res.ok) {
                 alert("Login successful");
             } else {
@@ -31,6 +43,18 @@ export default function Login() {
         } catch (err) {
             console.error(err);
             alert("Server error");
+=======
+            if (!res.ok) {
+                alert(data.error || "Login failed");
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(data));
+            window.location.href = "/dashboard";
+
+        } catch (err) {
+            alert("Server error, please try again");
+>>>>>>> 3a1a0863ac8041ba750a9f21e68838f85d29b54c
         }
     };
 
