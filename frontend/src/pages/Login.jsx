@@ -6,12 +6,29 @@ import "../styles/login.css";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    /////
     const onSubmit = async (e) => {
         e.preventDefault();
-        // لاحقاً بنربطها بـ API
-        console.log({ email, password });
-        alert("Login clicked (API later)");
+        try {
+            const res = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert(data.error || "Login failed");
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(data));
+            window.location.href = "/dashboard";
+
+        } catch (err) {
+            alert("Server error, please try again");
+        }
     };
 
     return (
