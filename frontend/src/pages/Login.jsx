@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import logo from "../assets/logo.png";
 import "../styles/login.css";
 
@@ -7,11 +6,32 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+
+
     const onSubmit = async (e) => {
         e.preventDefault();
-        // لاحقاً بنربطها بـ API
-        console.log({ email, password });
-        alert("Login clicked (API later)");
+
+        try {
+            const res = await fetch("http://localhost:3000/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert("Login successful");
+            } else {
+                alert(data.message);
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("Server error");
+        }
     };
 
     return (
